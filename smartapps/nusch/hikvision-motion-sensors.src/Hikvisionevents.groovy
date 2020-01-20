@@ -1,7 +1,8 @@
 /**
- *  HikvisionMotion
+ *  HikvisionAlarms
  *
- *  Copyright 2018 Adrian Caramaliu
+ *  Copyright 2019 Ralph Torchia
+ *  Origianal code from "HikvisionMotion" by Adrian Caramaliu
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -14,10 +15,10 @@
  *
  */
 definition(
-    name: "Hikvision Motion Sensors",
-    namespace: "ady624",
-    author: "Adrian Caramaliu",
-    description: "Motion detection for Hikvision/LaView NVRs",
+    name: "Hikvision Events",
+    namespace: "rtorchia",
+    author: "Ralph Torchia",
+    description: "Notification for events from Hikvision NVRs",
     category: "Safety & Security",
     iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
@@ -25,7 +26,7 @@ definition(
 
 
 preferences {
-	section("Title") {
+	section("Hikvison Events") {
 		// TODO: put inputs here
 	}
 }
@@ -100,6 +101,6 @@ private processEvent(event) {
     def deviceDNI = (app.id + '-' + channelName + '-' + eventType.toLowerCase().replaceAll(' ', '-')).toLowerCase();
     def device = getChildDevice(deviceDNI)
     def deviceName = "$cameraName $eventType Sensor".split()*.capitalize().join(" ")
-    if(!device) device = addChildDevice("ady624", "Hikvision Motion Sensor", deviceDNI, null, [label: deviceName])
+    if(!device) device = addChildDevice("rtorchia", "Hikvision Events", deviceDNI, null, [label: deviceName])
     if (device) device.motionActive()
 }
