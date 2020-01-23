@@ -12,7 +12,7 @@
  *
  */
 metadata {
-	definition (name: "Hikvision Events", namespace: "rtorchia", author: "Ralph Torchia") {
+	definition (name: "Hikvision Motion Sensor", namespace: "nusch", author: "Steven Hannusch") {
 		capability "Motion Sensor"
 		capability "Sensor"
 	}
